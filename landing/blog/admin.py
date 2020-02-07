@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from landing.blog import models
+
+
+@admin.register(models.Post)
+class PostAdmin(admin.ModelAdmin):
+    pass

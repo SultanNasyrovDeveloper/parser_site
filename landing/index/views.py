@@ -7,6 +7,7 @@ from django.views import generic
 
 from landing.index import models
 from landing.contact_form import forms
+from landing.blog.models import Post
 
 
 class IndexPageView(generic.TemplateView, generic.FormView):
@@ -26,10 +27,9 @@ class IndexPageView(generic.TemplateView, generic.FormView):
         context['questions'] = models.FAQuestion.objects.all()
         context['examples'] = self.get_examples()
         context['categories'] = models.ParsingCategories.objects.all()
-
+        context['posts'] = Post.objects.all()[:4]
         context['form_is_valid'] = self.request.session.get('form_is_valid', None)
         self.request.session['form_is_valid'] = None
-
         return context
 
     def form_valid(self, form):

@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'ckeditor',
+
     'landing.index',
     'landing.contact_form',
     'landing.blog',
@@ -45,6 +47,9 @@ ROOT_URLCONF = 'landing.urls'
 
 
 SENDFILE_BACKEND = 'sendfile.backends.development'
+
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 
 TEMPLATES = [
