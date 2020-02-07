@@ -14,7 +14,7 @@ class ParsingCategoriesAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.FAQuestion)
-class FAQustionsAdmin(admin.ModelAdmin):
+class FAQuestionsAdmin(admin.ModelAdmin):
     pass
 
 
