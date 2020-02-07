@@ -8,6 +8,7 @@ from django.views import generic
 from landing.index import models
 from landing.contact_form import forms
 from landing.blog.models import Post
+from landing.seo.models import PageSeo
 
 
 
@@ -29,6 +30,7 @@ class IndexPageView(generic.TemplateView, ContactFormProcessViewMixin):
 
     template_name = 'index.html'
     success_url = reverse_lazy('index:index')
+    page_name = 'Index'
 
     def get_context_data(self, **kwargs) -> typing.Dict:
         """
@@ -41,6 +43,7 @@ class IndexPageView(generic.TemplateView, ContactFormProcessViewMixin):
         context['categories'] = models.ParsingCategories.objects.all()
         context['posts'] = Post.objects.all()[:4]
         context['form_is_valid'] = self.request.session.get('form_is_valid', None)
+        context['seo'], _ = PageSeo.objects.get_or_create(page_name=self.page_name)
         self.request.session['form_is_valid'] = None
         return context
 

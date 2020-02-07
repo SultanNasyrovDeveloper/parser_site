@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'landing.index',
     'landing.contact_form',
     'landing.blog',
+    'landing.seo',
 ]
 
 MIDDLEWARE = [
