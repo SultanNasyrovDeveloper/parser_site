@@ -24,6 +24,7 @@ class IndexPage(models.Model):
 
     email = models.EmailField('Email', max_length=100, null=True, blank=True)
     phone = models.CharField('Phone number', max_length=50, null=True, blank=True)
+    instagram = models.CharField('Instagram', max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Index page'

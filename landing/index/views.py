@@ -1,5 +1,7 @@
 import typing
+import os
 
+from django.conf import settings
 from django.shortcuts import redirect
 from django.views import generic
 
@@ -52,10 +54,11 @@ def download_document(request, example_id):
 
     try:
         example = models.Example.objects.get(id=example_id)
+        filepath = ''.join([settings.BASE_DIR, example.file.url])
     except models.Example.DoesNotExist:
         return redirect('index:index')
 
-    return sendfile(request, example.file.url, attachment=True)
+    return sendfile(request, filepath, attachment=True)
 
 
 

@@ -12,10 +12,10 @@ class ContactForm(forms.ModelForm):
         model = models.ContactForm
         fields = ('name', 'phone_number', 'message')
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control mb-30', 'placeholder': 'Введите имя...'}),
+            'name': forms.TextInput(attrs={'class': 'form-control mb-30', 'placeholder': 'Введите имя'}),
             'phone_number': forms.TextInput(attrs={
                 'class': 'form-control mb-30 phone-input',
-                'placeholder': 'Введите номер...'}
+                'placeholder': 'Введите номер'}
             ),
             'message': forms.Textarea(attrs={
                 'class': 'form-text-area mb-30', 'cols': 30, 'rows': 6, 'placeholder': 'Сообщение*'

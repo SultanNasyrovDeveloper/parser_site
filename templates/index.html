@@ -293,7 +293,7 @@
 
 
     <!--EXAMPLES -->
-    <div class="we-build-product-area section-padding-0-50">
+    <div class="we-build-product-area gray-bg section-padding-0-50">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -303,8 +303,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             <div class="row justify-content-center">
                 <!-- Single Product Build -->
@@ -367,6 +365,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center mt-4 align-items-center">
+                    <a class="boxed-btn" href="#" data-toggle="modal" data-target="#contact-form-modal">
+                        Связаться
+                    </a>
+                </div>
+            </div>
         </div>
     </div><!--/EXAMPLES -->
 
@@ -399,7 +405,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="support_text text-center mb-50">
-                        <h4>Остались вопросы?<a href="#"><span> Напишите нам: {{ page.email }}</span></a></h4>
+                        <h4>Остались вопросы? Напишите нам:<a href="mailto: {{ page.email }}"><span> {{ page.email }}</span></a></h4>
                     </div>
                 </div>
             </div>
@@ -407,7 +413,7 @@
     </div><!-- /FAQ -->
 
 
-    <!-- Daily update Area -->
+    <!-- BLOG -->
     <div class="daily-update-area gray-bg section-padding-100-50" id="blog">
         <div class="container">
             <div class="row">
@@ -509,18 +515,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Daily update Area -->
+    </div><!-- /BLOG -->
 
 
-    <!-- Contact Area Start -->
+    <!-- CONTACT -->
     <section class="contact-our-area section-padding-100-0" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h6>Contact</h6>
-                        <h4>Contact with our support</h4>
+                        <h6>Контакты</h6>
+                        <h4>C нами всегда можно связаться</h4>
                     </div>
                 </div>
             </div>
@@ -533,11 +538,11 @@
                                 <!-- Single Contact Info -->
                                 <div class="single-contact-info d-flex align-items-center">
                                     <div class="icon">
-                                        <i class="fa fa-location-arrow"></i>
+                                        <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="contact-info">
-                                        <h5 class="mb-1">Our head office address</h5>
-                                        <p class="mb-0">202, Grasselli Street.</p>
+                                        <h5 class="mb-1">Звоните нам</h5>
+                                        <p class="mb-0">{{ page.phone }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -545,11 +550,11 @@
                             <!-- Single Contact Info -->
                             <div class="single-contact-info d-flex align-items-center mt-50">
                                 <div class="icon">
-                                    <i class="fa fa-phone"></i>
+                                    <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="contact-info">
-                                    <h5 class="mb-1">Call Us On</h5>
-                                    <p class="mb-0">+8801254695</p>
+                                    <h5 class="mb-1">Пишите нам</h5>
+                                    <p class="mb-0"><a class="text-white" href="mailto: {{ page.email }}">{{ page.email }}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -561,8 +566,8 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="contact-info">
-                                    <h5 class="mb-1">Email Us At</h5>
-                                    <p class="mb-0">themezome@gmail.com</p>
+                                    <h5 class="mb-1">Наш инстаграм</h5>
+                                    <p class="mb-0">{{ page.instagram }}</p>
                                 </div>
                             </div>
                         </div>
@@ -575,10 +580,11 @@
                     <div class="contact_from_area clearfix mb-100">
                         <div class="contact_form">
                             <form method="post" id="main_contact_form">
+                            {% csrf_token %}
                                 <div class="contact_input_area">
                                     <div id="success_fail_info"></div>
                                     <div class="row">
-                                        {% for field in contact_form.visible_fields %}
+                                        {% for field in form.visible_fields %}
                                         <!-- Form Group -->
                                         <div class="col-12">
                                             <div class="form-group">
@@ -586,6 +592,10 @@
                                             </div>
                                         </div>
                                         {% endfor %}
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn boxed-btn">Отправить</button>
+                                        </div>
+
                                     </div>
                                 </div>
                             </form>
@@ -594,8 +604,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Contact Area End -->
+    </section><!-- /CONTACT -->
 
 
     <!-- Footer Contact Area -->
