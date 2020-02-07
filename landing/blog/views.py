@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse_lazy
 
 from landing.blog import models
+from landing.index.views import ContactFormProcessViewMixin
 
 
-class PostDetail(generic.DetailView):
+class PostDetail(generic.DetailView, ContactFormProcessViewMixin):
 
     queryset = models.Post.objects.all()
     template_name = 'blog_detail.html'
     context_object_name = 'post'
+
+    @property
+    def success_url(self):
+        return reverse_lazy('blog:detail', args=(self.get_object().id, ))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

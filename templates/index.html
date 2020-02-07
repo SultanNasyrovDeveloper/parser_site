@@ -319,7 +319,7 @@
                         </div>
                         <!-- Single Blog Content -->
                         <div class="single-blog-content mt-20">
-                            <span>{{ post.created|date:'d b, Y' }}</span>
+                            <span>{{ post.created|date:'d b, Y H' }}</span>
                             <a href="{{ post.get_absolute_url }}">
                                 <h5>{{ post.name }}</h5>
                             </a>
@@ -373,12 +373,4 @@
         </div>
     </div><!-- /FAQ -->
 
-{% endblock %}
-
-
-{% block script %}
-    <script>
-        $('.phone-input').mask('+7 (999) 999 9999');
-        $('#current-year').text(new Date().getFullYear());
-    </script>
 {% endblock %}

@@ -1,12 +1,35 @@
 from django.db import models
 
 
+class SiteSettings(models.Model):
+
+    email = models.EmailField('Email', max_length=100, null=True, blank=True)
+    phone = models.CharField('Phone number', max_length=50, null=True, blank=True)
+    instagram = models.CharField('Instagram', max_length=100, null=True, blank=True)
+    telegram = models.CharField('Telegram', max_length=100, null=True, blank=True)
+    short_about = models.CharField('Short about', max_length=300, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Site settings'
+
+    @classmethod
+    def load(cls):
+        """
+        Get the only model instance.
+        """
+        instance, _ = cls.objects.get_or_create(id=1)
+        return instance
+
+
+    def __str__(self):
+        return 'Настройки сайта'
+
+
 class IndexPage(models.Model):
     """
     Index page singleton model.
     """
 
-    logo = models.FileField('Logo', upload_to='logo/', null=True, blank=True)
     tagline = models.CharField('Tagline', max_length=200, blank=True, null=True)
     subtagline = models.CharField('Subtagline', max_length=400, blank=True, null=True)
 
@@ -22,11 +45,7 @@ class IndexPage(models.Model):
     second_type_header = models.CharField('Second type name', max_length=100, null=True, blank=True)
     second_type_description = models.CharField('Second type name', max_length=300, null=True, blank=True)
 
-    email = models.EmailField('Email', max_length=100, null=True, blank=True)
-    phone = models.CharField('Phone number', max_length=50, null=True, blank=True)
-    instagram = models.CharField('Instagram', max_length=100, null=True, blank=True)
-    telegram = models.CharField('Telegram', max_length=100, null=True, blank=True)
-    short_about = models.CharField('Short about', max_length=300, null=True, blank=True)
+
 
     class Meta:
         verbose_name = 'Index page'

@@ -1,8 +1,8 @@
 import typing
-import os
 
 from django.conf import settings
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import generic
 
 from landing.index import models
@@ -10,13 +10,25 @@ from landing.contact_form import forms
 from landing.blog.models import Post
 
 
-class IndexPageView(generic.TemplateView, generic.FormView):
+
+class ContactFormProcessViewMixin(generic.FormView):
+
+    form_class = forms.ContactForm
+    success_url = None
+
+    def form_valid(self, form):
+        self.request.session['form_is_valid'] = True
+        form.save()
+        return redirect(self.success_url)
+
+
+class IndexPageView(generic.TemplateView, ContactFormProcessViewMixin):
     """
     Index page view.
     """
 
     template_name = 'index.html'
-    form_class = forms.ContactForm
+    success_url = reverse_lazy('index:index')
 
     def get_context_data(self, **kwargs) -> typing.Dict:
         """
@@ -31,11 +43,6 @@ class IndexPageView(generic.TemplateView, generic.FormView):
         context['form_is_valid'] = self.request.session.get('form_is_valid', None)
         self.request.session['form_is_valid'] = None
         return context
-
-    def form_valid(self, form):
-        self.request.session['form_is_valid'] = True
-        form.save()
-        return redirect('index:index')
 
     def get_examples(self):
         """

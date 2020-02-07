@@ -52,13 +52,13 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li><a href="#home">Главная</a></li>
-                                <li><a href="#about">Сервис</a></li>
-                                <li><a href="#parsing">Парсинг</a></li>
-                                <li><a href="#examples">Примеры</a></li>
-                                <li><a href="#blog">Блог</a></li>
-                                <li><a href="#faq">FAQ</a></li>
-                                <li><a href="#contact">Контакты</a></li>
+                                <li><a href="{% url 'index:index' %}#home">Главная</a></li>
+                                <li><a href="{% url 'index:index' %}#about">Сервис</a></li>
+                                <li><a href="{% url 'index:index' %}#parsing">Парсинг</a></li>
+                                <li><a href="{% url 'index:index' %}#examples">Примеры</a></li>
+                                <li><a href="{% url 'index:index' %}#blog">Блог</a></li>
+                                <li><a href="{% url 'index:index' %}#faq">FAQ</a></li>
+                                <li><a href="{% url 'index:index' %}#contact">Контакты</a></li>
                             </ul>
                             <a class="boxed-btn" href="#" data-toggle="modal" data-target="#contact-form-modal">
                                 Связаться
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="contact-info">
                                         <h5 class="mb-1">Звоните нам</h5>
-                                        <p class="mb-0">{{ page.phone }}</p>
+                                        <p class="mb-0">{{ settings.phone }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="contact-info">
                                     <h5 class="mb-1">Пишите нам</h5>
-                                    <p class="mb-0"><a class="text-white" href="mailto: {{ page.email }}">{{ page.email }}</a></p>
+                                    <p class="mb-0"><a class="text-white" href="mailto: {{ settings.email }}">{{ settings.email }}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="contact-info">
                                     <h5 class="mb-1">Наш инстаграм</h5>
-                                    <p class="mb-0">{{ page.instagram }}</p>
+                                    <p class="mb-0">{{ settings.instagram }}</p>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                                 <h2 class="text-white">LiteScan</h2>
                             </a>
                         </div>
-                        <p class="mt-30">{{ page.short_about }}</p>
+                        <p class="mt-30">{{ settings.short_about }}</p>
                     </div>
                 </div>
 
@@ -188,10 +188,10 @@
                     <div class="footer-single-widget mb-50">
                         <h4>Contact info</h4>
                         <ul>
-                            <li><a href="#"><i class="fa fa-envelope"></i> {{ page.email }}</a></li>
-                            <li><a href="#"><i class="fa fa-mobile-phone"></i> {{ page.phone }}</a></li>
-                            <li><a href=""><i class="fa fa-instagram"></i> {{ page.instagram }}</a></li>
-                            <li><a href="#"><i class="fa fa-paper-plane"></i> {{ page.telegram }}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> {{ settings.email }}</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> {{ settings.phone }}</a></li>
+                            <li><a href=""><i class="fa fa-instagram"></i> {{ settings.instagram }}</a></li>
+                            <li><a href="#"><i class="fa fa-paper-plane"></i> {{ settings.telegram }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -201,13 +201,13 @@
                     <div class="footer-single-widget mb-50">
                         <h4>Ссылки</h4>
                         <ul>
-                            <li><a href="#home">Главная</a></li>
-                            <li><a href="#about">Сервис</a></li>
-                            <li><a href="#parsing">Парсинг</a></li>
-                            <li><a href="#examples">Примеры</a></li>
-                            <li><a href="#blog">Блог</a></li>
-                            <li><a href="#faq">FAQ</a></li>
-                            <li><a href="#contact">Контакты</a></li>
+                            <li><a href="{% url 'index:index' %}#home">Главная</a></li>
+                            <li><a href="{% url 'index:index' %}#about">Сервис</a></li>
+                            <li><a href="{% url 'index:index' %}#parsing">Парсинг</a></li>
+                            <li><a href="{% url 'index:index' %}#examples">Примеры</a></li>
+                            <li><a href="{% url 'index:index' %}#blog">Блог</a></li>
+                            <li><a href="{% url 'index:index' %}#faq">FAQ</a></li>
+                            <li><a href="{% url 'index:index' %}#contact">Контакты</a></li>
                         </ul>
                     </div>
                 </div>
@@ -304,6 +304,11 @@
 
     <!-- Custom js-->
     <script src="{% static 'js/main.js'%}"></script>
+
+    <script>
+        $('.phone-input').mask('+7 (999) 999 9999');
+        $('#current-year').text(new Date().getFullYear());
+    </script>
 
     {% block script %}
 
