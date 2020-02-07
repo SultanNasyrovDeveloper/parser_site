@@ -10,6 +10,7 @@ django-cleanup = "*"
 psycopg2-binary = "*"
 pillow = "*"
 django-sendfile = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.7"

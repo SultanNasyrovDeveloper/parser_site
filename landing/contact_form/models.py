@@ -17,3 +17,14 @@ class ContactForm(models.Model):
         Get instance string representation.
         """
         return f'Заявка №{self.id} от {self.created.strftime("%d.%m.%Y %H:%M")}'
+
+    def save(self, *args, **kwargs):
+
+        super().save()
+        self.inform_admins()
+
+    def inform_admins(self):
+        """
+        Inform admins about new instance creation.
+        """
+        pass

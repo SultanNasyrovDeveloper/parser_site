@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    {% block meta %}
+        <title>{{ seo.title }}</title>
+        <meta name="description" content="{{ seo.description }}">
+        <meta name="keywords" content="{{ seo.keywords }}" />
+        {% if seo.raw_html %}
+            {{ seo.raw_html|safe }}
+        {% endif %}
+
+
+    {% endblock meta %}
+
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- PRELOADER-->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div><!-- /PRELOADER -->
+
+
+    <!-- NAVIGATION -->
+    <header class="header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="onitaNav">
+
+                    <!-- Logo -->
+                    <a href="{% url 'index:index' %}">
+                        <h2 class="text-white" >LiteScan</h2>
+                    </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href="{% url 'index:index' %}#home">Главная</a></li>
+                                <li><a href="{% url 'index:index' %}#about">Сервис</a></li>
+                                <li><a href="{% url 'index:index' %}#parsing">Парсинг</a></li>
+                                <li><a href="{% url 'index:index' %}#examples">Примеры</a></li>
+                                <li><a href="{% url 'index:index' %}#blog">Блог</a></li>
+                                <li><a href="{% url 'index:index' %}#faq">FAQ</a></li>
+                                <li><a href="{% url 'index:index' %}#contact">Контакты</a></li>
+                            </ul>
+                            <a class="boxed-btn" href="#" data-toggle="modal" data-target="#contact-form-modal">
+                                Связаться
+                            </a>
+                        </div>
+
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header><!-- /NAVIGATION -->
+
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!-- CONTACT -->
+    <section class="contact-our-area bg-grey section-padding-100-0" id="contact">
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h6>Контакты</h6>
+                        <h4>C нами всегда можно связаться</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-11 col-md-11 col-lg-5">
+                    <div class="contact-bg-pattern mb-100">
+                        <div class="contact-information">
+                            <div class="contact-information">
+                                <!-- Single Contact Info -->
+                                <div class="single-contact-info d-flex align-items-center">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h5 class="mb-1">Звоните нам</h5>
+                                        <p class="mb-0">{{ settings.phone }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Contact Info -->
+                            <div class="single-contact-info d-flex align-items-center mt-50">
+                                <div class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h5 class="mb-1">Пишите нам</h5>
+                                    <p class="mb-0"><a class="text-white" href="mailto: {{ settings.email }}">{{ settings.email }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-information">
+                            <!-- Single Contact Info -->
+                            <div class="single-contact-info d-flex align-items-center mt-50">
+                                <div class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h5 class="mb-1">Наш инстаграм</h5>
+                                    <p class="mb-0">{{ settings.instagram }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <!-- Contact Form -->
+                    <div class="contact_from_area clearfix mb-100">
+                        <div class="contact_form">
+                            <form method="post" id="main_contact_form">
+                            {% csrf_token %}
+                                <div class="contact_input_area">
+                                    <div id="success_fail_info"></div>
+                                    <div class="row">
+                                        {% for field in form.visible_fields %}
+                                        <!-- Form Group -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn boxed-btn">Отправить</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /CONTACT -->
+
+
+    <!-- FOOTER-->
+    <div class="footer-contact-area section-padding-100-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="footer-single-widget mb-50">
+                        <div class="footer-logo">
+                            <a href="#">
+                                <h2 class="text-white">LiteScan</h2>
+                            </a>
+                        </div>
+                        <p class="mt-30">{{ settings.short_about }}</p>
+                    </div>
+                </div>
+
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="footer-single-widget mb-50">
+                        <h4>Contact info</h4>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-envelope"></i> {{ settings.email }}</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> {{ settings.phone }}</a></li>
+                            <li><a href=""><i class="fa fa-instagram"></i> {{ settings.instagram }}</a></li>
+                            <li><a href="#"><i class="fa fa-paper-plane"></i> {{ settings.telegram }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="footer-single-widget mb-50">
+                        <h4>Ссылки</h4>
+                        <ul>
+                            <li><a href="{% url 'index:index' %}#home">Главная</a></li>
+                            <li><a href="{% url 'index:index' %}#about">Сервис</a></li>
+                            <li><a href="{% url 'index:index' %}#parsing">Парсинг</a></li>
+                            <li><a href="{% url 'index:index' %}#examples">Примеры</a></li>
+                            <li><a href="{% url 'index:index' %}#blog">Блог</a></li>
+                            <li><a href="{% url 'index:index' %}#faq">FAQ</a></li>
+                            <li><a href="{% url 'index:index' %}#contact">Контакты</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div><!-- /FOOTER -->
+
+    <!-- Copy Right Area -->
+    <div class="copy-right-area">
+        <div class="container">
+            <div class="row">
+{#                <!-- Copy Right Menu -->#}
+{#                <div class="col-md-6">#}
+{#                    <div class="copy-right-menu">#}
+{#                        <ul>#}
+{#                            <li><a href="#">Privace &amp; Policy</a></li>#}
+{#                            <li><a href="#">Faq's</a></li>#}
+{#                            <li><a href="#">Get a Quote</a></li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+
+                <!-- Copy Right Content -->
+                <div class="col-md-6 text-right mt-sm-cu-30">
+                    <div class="copy-right-content">
+                        <p>Copyright © By LiteScan <span id="current-year"></span>. All right reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="contact-form-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Форма обратной связи</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="modal_contact_form" class="mt-3">
+                    {% csrf_token %}
+                        <div class="contact_input_area">
+                            <div id="success_fail_info"></div>
+                            <div class="row">
+                                {% for field in form.visible_fields %}
+                                    <!-- Form Group -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" form="modal_contact_form" class="boxed-btn" style="border: none" value="Отправить">
+                    <button type="button" class="btn" data-dismiss="modal" style="height: 46px;">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js'%}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/jquery.nav.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/scrollIt.js'%}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/nice-select.min.js'%}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/slick.min.js'%}"></script>
+    <script src="{% static 'js/jquery.animatedheadline.min.js'%}"></script>
+    <script src="{% static 'js/classy-nav.js'%}"></script>
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+
+    <!-- Custom js-->
+    <script src="{% static 'js/main.js'%}"></script>
+
+    <script>
+        $('.phone-input').mask('+7 (999) 999 9999');
+        $('#current-year').text(new Date().getFullYear());
+    </script>
+
+    {% block script %}
+
+    {% endblock %}
+
+
+</body>
+
+</html>

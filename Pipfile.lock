@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9194ae1638bc665cc2d43571143e32dc54fbd5c05d2a652f3c68b3c03f21e684"
+            "sha256": "ab814ac519427ea98367234fc2831709e05f906f33795be8257f396821329c42"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -30,6 +30,14 @@
             ],
             "version": "==3.0.3"
         },
+        "django-ckeditor": {
+            "hashes": [
+                "sha256:71c3c7bb46b0cbfb9712ef64af0d2a406eab233f44ecd7c42c24bdfa39ae3bde",
+                "sha256:e4d112851a72c5bf8b586e1c674d34084cab16d28f2553ad15cc770d1e9639c7"
+            ],
+            "index": "pypi",
+            "version": "==5.9.0"
+        },
         "django-cleanup": {
             "hashes": [
                 "sha256:412c3f9417ddaaaa561b60237b109550b16e556db92d4616278fc7e1ad9ab0a4",
@@ -37,6 +45,13 @@
             ],
             "index": "pypi",
             "version": "==4.0.0"
+        },
+        "django-js-asset": {
+            "hashes": [
+                "sha256:8ec12017f26eec524cab436c64ae73033368a372970af4cf42d9354fcb166bdd",
+                "sha256:c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260"
+            ],
+            "version": "==1.2.2"
         },
         "django-sendfile": {
             "hashes": [
