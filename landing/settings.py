@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z(#3+_%ql8m+$^afqp-)2ama%r@k)k2ytc=^2(3f72iz7%yzl!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -45,7 +45,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'landing.urls'
 
 
-SENDFILE_BACKEND = sendfile.backends.development
+SENDFILE_BACKEND = sendfile.backends.simple
 
 
 TEMPLATES = [
