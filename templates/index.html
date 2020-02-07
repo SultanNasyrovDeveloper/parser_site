@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    {% block meta %}
+        <title>Base template</title>
+    {% endblock meta %}
+
+    <style>
+    </style>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- PRELOADER-->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div><!-- /PRELOADER -->
+
+
+
+
+    <!-- NAVIGATION -->
+    <header class="header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="onitaNav">
+
+                    <!-- Logo -->
+                    <a href="{% url 'index:index' %}">
+                        <h2 class="text-white" >LiteScan</h2>
+                    </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href="#home">Главная</a></li>
+                                <li><a href="#about">О нас</a></li>
+                                <li><a href="#service">Service</a></li>
+                                <li><a href="#work">Work</a></li>
+                                <li><a href="#team">Team</a></li>
+                                <li><a href="#price">Price</a></li>
+                                <li><a href="#">Blog</a>
+                                    <ul class="dropdown">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-grid.html">Blog grid</a></li>
+                                        <li><a href="blog-grid-sidebar.html">Blog grid sidebar</a></li>
+                                        <li><a href="single-blog.html">Single blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header><!-- /NAVIGATION -->
+
+
+    <!--BANNER -->
+    <div class="welcome-area theme-bg" id="home">
+        <!-- BACKGROUND IMAGE -->
+        <div class="welcome-bg-thumb opacity-6" style="background-image: url({% static 'img/bg-img/bg-patter.png' %});"></div><!-- /BACKGROUND IMAGE -->
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+
+                <div class="row h-100 align-items-center">
+                                        <!-- BANNER TAGLINES CONTAINER -->
+                    <div class="col-lg-6">
+                        <div class="welcome-content mt-sm-100">
+                            {% if page.tagline %}
+                            <h3 class="wow fadeInUp" data-wow-delay="0.4s">{{ page.tagline }}</h3>
+                            {% endif %}
+
+                            {% if page.subtagline %}
+                            <h5 class="wow fadeInUp" data-wow-delay="0.6s">{{ page.subtagline }}</h5>
+                            {% endif %}
+                            <div class="slider-btn mt-30">
+                                <a class="boxed-btn" href="#" data-toggle="modal" data-target="#contact-form-modal">
+                                    Связаться
+                                </a>
+                            </div>
+                        {% if form_is_valid is not None %}
+                            {% if form_is_valid %}
+                                <div>form is valid</div>
+                            {% else  %}
+                                <div>form is not valid</div>
+                            {% endif %}
+
+                        {% endif %}
+                        </div>
+                    </div><!-- /BANNER TAGLINES CONTAINER -->
+
+                    <div class="col-lg-6" style="z-index: 100 !important; position: static;">
+                    </div>
+                </div>
+
+                <div class="welcome-banner-shape">
+                    <img src="{% static 'img/bg-img/wel-bg.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /BANNER -->
+
+
+    <!-- ABOUT -->
+    <div class="set-up-area section-padding-100-50" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Set up Text Content -->
+                <div class="col-md-6">
+                    <div class="set-up-content-text mb-50">
+                        <h6>Сервис</h6>
+                        {% if page.about_us_tagline %}
+                            <h4>{{ page.about_us_tagline }}</h4>
+                        {% endif %}
+                        
+                        {% if page.about_us_text %}
+                            <p>{{ page.about_us_text }}</p>
+                        {% endif %}
+
+                        <ul class="set-up-content-list">
+                            {% for statement in page.about_us_list_split %}
+                                <li><i class="ti-check"></i>{{ statement }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        <div class="button-area mt-50">
+                            <a class="btn boxed-btn" href="#" data-toggle="modal" data-target="#contact-form-modal">Связаться</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set up thumb -->
+                <div class="col-md-6 align-items-start">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                <th scope="col">Test</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- ABOUT -->
+
+
+    <!-- SITES CATEGORIES -->
+    <div class="feature-area gray-bg section-padding-100-50" id="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h6>категории</h6>
+                        <h4>Категории сайтов для парсинга</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                
+                {% for category in categories %}
+                <!-- Single Feature area -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="single-feature-area text-center">
+                        <!-- Feature Icon -->
+                        <div class="feature-icon">
+                            <img src="{{ category.logo.url }}" alt="">
+                        </div>
+                        <!-- Single Feature Text -->
+                        <div class="feature-content-text">
+                            <h4>{{ category.name }}</h4>
+                            <p class="mb-0">{{ category.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div><!-- /SITES CATEGORIES -->
+
+
+    <!-- TYPES -->
+    <div class="call-to-desc-area">
+        <div class="container section-padding-100">
+            <div class="row">
+                <div class="col-12">
+                    <div class="call-to-action-area">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="call-to-title text-center mb-50">
+                                    <h2 class="text-white mb-0">{{ page.types_header }}</h2>
+                                </div>
+                            </div>
+
+                            <!-- Single Content -->
+                            <div class="col-6">
+                                <div class="single-call-desc-content ca-mb-50">
+                                    <h4 class="text-center">{{ page.first_type_header }}</h4>
+                                    <p>{{ page.first_type_description }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Content -->
+                            <div class="col-6">
+                                <div class="single-call-desc-content">
+                                    <h4 class="text-center">{{ page.second_type_header }}</h4>
+                                    <p>{{ page.second_type_description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /TYPES -->
+
+
+    <!--EXAMPLES -->
+    <div class="we-build-product-area section-padding-0-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center pt-4">
+                        <h6>Примеры</h6>
+                        <h4>{{ page.examples_header }}</h4>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-center">
+                <!-- Single Product Build -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="single-product-build-area">
+                        <!-- Product Thumb -->
+                        <div class="product-thumb home-3">
+                            <a href="{% url 'index:download' examples.0.id %}">
+                                <i class="fa fa-file-excel-o fa-3x"></i>
+                            </a>
+
+                        </div>
+                        <!-- Product COntent Text -->
+                        <div class="product-content-text">
+                            <a href="{% url 'index:download' examples.0.id %}">
+                                <h4>{{ examples.0.name }}</h4>
+                            </a>
+                            <p class="mb-0">{{ examples.0.description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Single Product Build -->
+                <div class="col-md-6 col-lg-4 product-pt-80">
+                    <div class="single-product-build-area">
+                        <!-- Product Thumb -->
+                        <div class="product-thumb home-3">
+                            <a href="{% url 'index:download' examples.1.id %}">
+                                <i class="fa fa-file-excel-o fa-3x"></i>
+                            </a>
+                        </div>
+                        <!-- Product COntent Text -->
+                        <div class="product-content-text">
+                            <a href="{% url 'index:download' examples.1.id %}">
+                                <h4>{{ examples.1.name }}</h4>
+                            </a>
+                            <p class="mb-0">{{ examples.1.description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Product Build -->
+                <div class="col-md-6 col-lg-4 product-pt-40">
+                    <div class="single-product-build-area">
+                        <!-- Product Thumb -->
+                        <div class="product-thumb home-3">
+                            <a href="{% url 'index:download' examples.2.id %}">
+                                <i class="fa fa-file-excel-o fa-3x"></i>
+                            </a>
+                        </div>
+                        <!-- Product COntent Text -->
+                        <div class="product-content-text">
+                            <a href="{% url 'index:download' examples.2.id %}">
+                                <h4>{{ examples.2.name }}</h4>
+                            </a>
+                            <p class="mb-0">{{ examples.2.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/EXAMPLES -->
+
+
+    <!-- FAQ -->
+    <div class="frequently_asked_question bg-overlay section-padding-100-50 bg-img clearfix" style="background-image: url(img/bg-img/10.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h6 class="text-white">FAQ</h6>
+                        <h4 class="text-white">Часто задаваемые вопросы</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% for question in questions %}
+                    <!-- Single FAQ Area Start -->
+                    <div class="col-md-6">
+                        <div class="single_faq mb-50 wow fadeInUp" data-wow-delay="0.2s">
+                            <h5>{{ question.question }}</h5>
+                            <p>{{ question.answer }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="support_text text-center mb-50">
+                        <h4>Остались вопросы?<a href="#"><span> Напишите нам: {{ page.email }}</span></a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /FAQ -->
+
+
+    <!-- Daily update Area -->
+    <div class="daily-update-area gray-bg section-padding-100-50" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h6>Blog Area</h6>
+                        <h4>Daily Updates</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Blog Area -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single-blog-area mb-50">
+                        <!-- Single Blog Thumb -->
+                        <div class="blog-thumb">
+                            <img src="img/bg-img/43.jpg" alt="">
+                            <div class="blog-badge">Design</div>
+                        </div>
+                        <!-- Single Blog Content -->
+                        <div class="single-blog-content mt-20">
+                            <span>02 Apr, 2020</span>
+                            <a href="single-blog.html">
+                                <h5>Make your Marketing website</h5>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="blog-btn">
+                            <a href="single-blog.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Blog Area -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single-blog-area mb-50">
+                        <!-- Single Blog Thumb -->
+                        <div class="blog-thumb">
+                            <img src="img/bg-img/44.jpg" alt="">
+                            <div class="blog-badge">Design</div>
+                        </div>
+                        <!-- Single Blog Content -->
+                        <div class="single-blog-content mt-20">
+                            <span>02 Apr, 2020</span>
+                            <a href="single-blog.html">
+                                <h5>Make your Marketing website</h5>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="blog-btn">
+                            <a href="single-blog.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Blog Area -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single-blog-area mb-50">
+                        <!-- Single Blog Thumb -->
+                        <div class="blog-thumb">
+                            <img src="img/bg-img/45.jpg" alt="">
+                            <div class="blog-badge">Design</div>
+                        </div>
+                        <!-- Single Blog Content -->
+                        <div class="single-blog-content mt-20">
+                            <span>02 Apr, 2020</span>
+                            <a href="single-blog.html">
+                                <h5>Make your Marketing website</h5>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="blog-btn">
+                            <a href="single-blog.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Blog Area -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single-blog-area mb-50">
+                        <!-- Single Blog Thumb -->
+                        <div class="blog-thumb">
+                            <img src="img/bg-img/43.jpg" alt="">
+                            <div class="blog-badge">Design</div>
+                        </div>
+                        <!-- Single Blog Content -->
+                        <div class="single-blog-content mt-20">
+                            <span>02 Apr, 2020</span>
+                            <a href="single-blog.html">
+                                <h5>Make your Marketing website</h5>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                        <div class="blog-btn">
+                            <a href="single-blog.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Daily update Area -->
+
+
+    <!-- Contact Area Start -->
+    <section class="contact-our-area section-padding-100-0" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h6>Contact</h6>
+                        <h4>Contact with our support</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-11 col-md-11 col-lg-5">
+                    <div class="contact-bg-pattern mb-100">
+                        <div class="contact-information">
+                            <div class="contact-information">
+                                <!-- Single Contact Info -->
+                                <div class="single-contact-info d-flex align-items-center">
+                                    <div class="icon">
+                                        <i class="fa fa-location-arrow"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h5 class="mb-1">Our head office address</h5>
+                                        <p class="mb-0">202, Grasselli Street.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Contact Info -->
+                            <div class="single-contact-info d-flex align-items-center mt-50">
+                                <div class="icon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h5 class="mb-1">Call Us On</h5>
+                                    <p class="mb-0">+8801254695</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-information">
+                            <!-- Single Contact Info -->
+                            <div class="single-contact-info d-flex align-items-center mt-50">
+                                <div class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h5 class="mb-1">Email Us At</h5>
+                                    <p class="mb-0">themezome@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <!-- Contact Form -->
+                    <div class="contact_from_area clearfix mb-100">
+                        <div class="contact_form">
+                            <form method="post" id="main_contact_form">
+                                <div class="contact_input_area">
+                                    <div id="success_fail_info"></div>
+                                    <div class="row">
+                                        {% for field in contact_form.visible_fields %}
+                                        <!-- Form Group -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Area End -->
+
+
+    <!-- Footer Contact Area -->
+    <div class="footer-contact-area section-padding-100-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-single-widget mb-50">
+                        <div class="footer-logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <p class="mt-30">Voluptatibus labore doloribus id consequatur ducimus eum, voluptate reprehenderit sit debitis eligendi.</p>
+                        <!-- Contact Icon -->
+                        <div class="footer-contact-icon">
+                            <a href="#"><i class="fa fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-single-widget mb-50">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Diversity</a></li>
+                            <li><a href="#">Job News</a></li>
+                            <li><a href="#">Press News</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-single-widget mb-50">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="#">Imperdiet</a></li>
+                            <li><a href="#">Partueient</a></li>
+                            <li><a href="#">Faucibus</a></li>
+                            <li><a href="#">Ultricies</a></li>
+                            <li><a href="#">Vitae vel</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Widget -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-single-widget mb-50">
+                        <h4>Contact info</h4>
+                        <ul>
+                            <li><a href="#"><i class="ti-location-pin"></i> 112 Apoze, White House</a></li>
+                            <li><a href="#"><i class="ti-pin2"></i> New Jercy, USA</a></li>
+                            <li><a href="#"><i class="ti-email"></i> example@@gmail.com</a></li>
+                            <li><a href="#"><i class="ti-mobile"></i> +00 223 260</a></li>
+                            <li><a href="#"><i class="ti-location-pin"></i> ti-world</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Contact Area -->
+
+
+    <!-- Copy Right Area -->
+    <div class="copy-right-area">
+        <div class="container">
+            <div class="row">
+                <!-- Copy Right Menu -->
+                <div class="col-md-6">
+                    <div class="copy-right-menu">
+                        <ul>
+                            <li><a href="#">Privace &amp; Policy</a></li>
+                            <li><a href="#">Faq's</a></li>
+                            <li><a href="#">Get a Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Copy Right Content -->
+                <div class="col-md-6 text-right mt-sm-cu-30">
+                    <div class="copy-right-content">
+                        <p>Copyright © By Apoze 2020. All right reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" role="dialog" id="contact-form-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Форма обратной связи</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="modal_contact_form">
+                    {% csrf_token %}
+                        <div class="contact_input_area">
+                            <div id="success_fail_info"></div>
+                            <div class="row">
+                                {% for field in form.visible_fields %}
+                                    <!-- Form Group -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" form="modal_contact_form" class="boxed-btn" style="border: none" value="Отправить">
+                    <button type="button" class="btn" data-dismiss="modal" style="height: 46px;">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js'%}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/jquery.nav.js'%}"></script>
+    <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/scrollIt.js'%}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/nice-select.min.js'%}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/slick.min.js'%}"></script>
+    <script src="{% static 'js/jquery.animatedheadline.min.js'%}"></script>
+    <script src="{% static 'js/classy-nav.js'%}"></script>
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+
+    <!-- Custom js-->
+    <script src="{% static 'js/main.js'%}"></script>
+
+    <script>
+        $('.phone-input').mask('+7 (999) 999 9999')
+    </script>
+
+
+</body>
+
+</html>
