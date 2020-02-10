@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z(#3+_%ql8m+$^afqp-)2ama%r@k)k2ytc=^2(3f72iz7%yzl!'
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.litescan.ru', 'litescan.ru']
 
 
 INSTALLED_APPS = [
@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'landing.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'parser_index',
-        'USER': 'developer',
-        'PASSWORD': '123456',
+        'NAME': 'landing',
+        'USER': 'landing_user',
+        'PASSWORD': 'shk&4rhO9u4hsk73tGGGKDf94',
         'HOST': 'localhost',
         'PORT': '',
     }
