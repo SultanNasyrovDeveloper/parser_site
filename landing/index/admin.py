@@ -3,6 +3,11 @@ from django.contrib import admin
 from landing.index import models
 
 
+@admin.register(models.SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    pass
+
+
 @admin.register(models.IndexPage)
 class IndexPageAdmin(admin.ModelAdmin):
     pass
